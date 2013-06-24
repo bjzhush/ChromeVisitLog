@@ -8,7 +8,7 @@ $mysqlPwd  = '123456';
 
 
 
-$urlBase = "https://www.google.com.hk/search?q=%s";
+$urlBase = "https://www.google.com.hk/search?q=%s&qscrl=1";
 $key = urlencode(str_replace(' ',' ',$_GET['key']));
 $urlToLocation = sprintf($urlBase,$key);
 
