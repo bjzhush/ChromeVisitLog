@@ -15,6 +15,8 @@ Log all chrome visit history ,search history ,and analyse your own habit data
        
        所使用浏览器确定为Chrome
 
+        要对搜索的输入实现ajax提示？ 比如输入ph ，使用下拉来显示 php phpinfo等 ？
+
         记录在google搜索的关键词    并不困难，只要在设置选项自定义地址栏搜索的引擎，通过php记录keyword以后，然后再重定向到
     google即可，目前没能记录的是对于搜索结果的访问情况（如你访问了搜索结果中的哪个页面等诸如此类）
 
