@@ -27,6 +27,8 @@ Log all chrome visit history ,search history ,and analyse your own habit data
     向服务器的跨域同步，不过这个应该 也是可以解决的
 
         目前有一个做的比较好的扩展可以参考：    timeStats （它自己的介绍是：You will be surprised how much time you spent on particular web pages.）
+        还有一个扩展，可以同步历史记录到google的， https://chrome.google.com/webstore/detail/updater-for-google-web-hi/ibhehjeahclandhcpbajhdfjeffnbcoa
+        名字叫做：Updater for Google Web History
 
 3.项目进度
     如有兴趣共同参与，欢迎通过email: bjzhush#gmail.com 联系我
