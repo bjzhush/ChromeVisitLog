@@ -1,20 +1,12 @@
 <?php
-
-## config here
-$machineid = '74:27:ea:2e:a1:1a'.'linux';
-$mysqlHost = 'localhost';
-$mysqlUser = 'root';
-$mysqlPwd  = '123456';
-
-
-
+include 'search_config.php';
 $urlBase = "https://www.google.com.hk/search?q=%s&qscrl=1";
 $key = urlencode(str_replace(' ',' ',$_GET['key']));
 $urlToLocation = sprintf($urlBase,$key);
 
 //log to my db
-$con = mysql_connect($mysqlHost, $mysqlUser, $mysqlPwd);
-if (!$con) {
+$conn = mysql_connect($mysqlHost, $mysqlUser, $mysqlPwd);
+if (!$conn) {
     exit('Cannot connect to mysql '.mysql_errno());
 }
 mysql_select_db('google');
