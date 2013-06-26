@@ -30,7 +30,7 @@ CREATE TABLE `chromeurllog` (
   `querystring` varchar(500) NOT NULL COMMENT 'all query string',
   `isok` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1 is ok ,0 has problem',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,7 +47,7 @@ CREATE TABLE `searchlog` (
   `createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `isuploaded` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否已被同步，默认否，值为0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 
