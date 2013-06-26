@@ -45,4 +45,6 @@ Log all chrome visit history ,search history ,and analyse your own habit data
                        7.访问一个url，察看是否运行正常
                        
 
+4.ToDoList
+    1.在记录的同时，file_get_contengs去抓取title？(由于目前使用的是浏览器自身发送的，为保持通用性和兼容性，不适合修改api或自己写插件去发送title到server)
 
