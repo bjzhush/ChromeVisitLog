@@ -29,10 +29,20 @@ Log all chrome visit history ,search history ,and analyse your own habit data
         目前有一个做的比较好的扩展可以参考：    timeStats （它自己的介绍是：You will be surprised how much time you spent on particular web pages.）
         还有一个扩展，可以同步历史记录到google的， https://chrome.google.com/webstore/detail/updater-for-google-web-hi/ibhehjeahclandhcpbajhdfjeffnbcoa
         名字叫做：Updater for Google Web History
+        PS: Chrome 浏览器的API可以参考这里  http://developer.chrome.com/extensions/overview.html
 
 3.项目进度
     如有兴趣共同参与，欢迎通过email: bjzhush#gmail.com 联系我
     
     2013/06/24   刚刚启动，还有很多想法和做法都还没完善，需要进一步实验和测试
+    2013/06/26   已经通过劫持toolbarqueries.google.com{.hk} 记录了chrome的所有访问记录，本项目之前的文件作废
+                usage: 1.在你的VPS上新建2个vhost，可以为同一目录，host name 为 toolbarqueries.google.com.hk 和 toolbarqueries.google.com
+                       2.上传index.php 和 .htaccess ，chromeurllog.sql到此文件夹
+                       3.修改index.php 的数据库配置
+                       4.导入sql文件，库名为google
+                       5.重启apache
+                       6.修改 toolbarqueries.google.com.hk  toolbarqueries.google.com 的DNS指向为你自己的php所在的ip
+                       7.访问一个url，察看是否运行正常
+                       
 
 
