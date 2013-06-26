@@ -47,4 +47,5 @@ Log all chrome visit history ,search history ,and analyse your own habit data
 
 4.ToDoList
     1.在记录的同时，file_get_contengs去抓取title？(由于目前使用的是浏览器自身发送的，为保持通用性和兼容性，不适合修改api或自己写插件去发送title到server)
+    2.在插入记录的同时，检查url是否与上一条相同？ （因为某些情况下可能会发送重复的url到接口，待观察数据后处理）
 
