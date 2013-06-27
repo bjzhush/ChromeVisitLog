@@ -4,7 +4,7 @@ $mysqlHost = '127.0.0.1';
 $mysqlUser = 'root';
 $mysqlPwd  = '494897';
 
-
+include 'curl.php';
 $queryString = $_SERVER['QUERY_STRING'];
 $arrExplode  = explode('info:', $queryString);
 
@@ -28,6 +28,13 @@ if(!empty($_SERVER["HTTP_CLIENT_IP"])) {
 }
 
 $time = date("Y-m-d H:i:s", time()+3600*4);
+
+$curl = new PCurl();
+$curl->setUrl($url);
+$res = $curl->run();
+
+$title    = $res['title'];
+$httpCode = $res['http_code'];
   
 //log to my db
 $conn = mysql_connect($mysqlHost, $mysqlUser, $mysqlPwd);
@@ -36,6 +43,6 @@ if (!$conn) {
 }
 mysql_select_db('google');
 mysql_query("set names 'utf8'");
-$sql = sprintf("insert into chromeurllog (url, time, ip, querystring, isok) values ('%s' , '%s', '%s', '%s', '%s')", $url, $time, $ip, $queryString, $isok);
+$sql = sprintf("insert into chromeurllog (url, ip, querystring, isok, title, httpcode) values ('%s' ,'%s', '%s', '%s', '%s', '%s')", $url, $ip, $queryString, $isok, $title, $httpCode);
 mysql_query($sql);
 mysql_close($conn);
