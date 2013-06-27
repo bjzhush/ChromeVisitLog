@@ -27,7 +27,7 @@ if(!empty($_SERVER["HTTP_CLIENT_IP"])) {
    $ip = "0.0.0.0"; 
 }
 
-$time = date("Y-m-d H:i:s", time()+3600);
+$time = date("Y-m-d H:i:s", time()+3600*4);
   
 //log to my db
 $conn = mysql_connect($mysqlHost, $mysqlUser, $mysqlPwd);
