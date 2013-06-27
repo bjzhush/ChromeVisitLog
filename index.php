@@ -2,7 +2,7 @@
 // config here
 $mysqlHost = '127.0.0.1';
 $mysqlUser = 'root';
-$mysqlPwd  = 'i';
+$mysqlPwd  = '494897';
 
 
 $queryString = $_SERVER['QUERY_STRING'];
@@ -26,6 +26,8 @@ if(!empty($_SERVER["HTTP_CLIENT_IP"])) {
 } else {
    $ip = "0.0.0.0"; 
 }
+
+$time = date("Y-m-d H:i:s", time()+3600);
   
 //log to my db
 $conn = mysql_connect($mysqlHost, $mysqlUser, $mysqlPwd);
@@ -34,6 +36,6 @@ if (!$conn) {
 }
 mysql_select_db('google');
 mysql_query("set names 'utf8'");
-$sql = sprintf("insert into chromeurllog (url, ip, querystring, isok) values ('%s' ,'%s', '%s', '%s')", $url, $ip, $queryString, $isok);
+$sql = sprintf("insert into chromeurllog (url, time, ip, querystring, isok) values ('%s' , '%s', '%s', '%s', '%s')", $url, $time, $ip, $queryString, $isok);
 mysql_query($sql);
 mysql_close($conn);
