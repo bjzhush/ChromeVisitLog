@@ -9,7 +9,7 @@ class PCurl
         return $this;
     }
 
-    public function run(){
+    public function getTitle(){
         curl_setopt($this->ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
         curl_setopt($this->ch, CURLOPT_FOLLOWLOCATION, 1);
         curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, 1);
@@ -25,16 +25,9 @@ class PCurl
                 $title = preg_replace('/\s+/', ' ', $titles[2]);
                 $title = trim($title);
             }
-            $ret = array(
-                    'title'        => $title,
-                    'httpCode'     => $curlInfo['http_code'],
-                    );
         } else {
-            $ret = array(
-                    'title'        => '',
-                    'httpCode'     => $curlInfo['http_code'],
-                    );
+            $title = '';
         }
-        return $ret;
+        return $title;
     }
 }

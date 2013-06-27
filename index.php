@@ -31,10 +31,8 @@ $time = date("Y-m-d H:i:s", time()+3600*4);
 
 $curl = new PCurl();
 $curl->setUrl($url);
-$res = $curl->run();
+$title = $curl->getTitle();
 
-$title    = $res['title'];
-$httpCode = $res['http_code'];
   
 //log to my db
 $conn = mysql_connect($mysqlHost, $mysqlUser, $mysqlPwd);
@@ -43,6 +41,6 @@ if (!$conn) {
 }
 mysql_select_db('google');
 mysql_query("set names 'utf8'");
-$sql = sprintf("insert into chromeurllog (url, ip, querystring, isok, title, httpcode) values ('%s' ,'%s', '%s', '%s', '%s', '%s')", $url, $ip, $queryString, $isok, $title, $httpCode);
+$sql = sprintf("insert into chromeurllog (url, ip, querystring, isok, title) values ('%s' ,'%s', '%s', '%s', '%s')", $url, $ip, $queryString, $isok, $title);
 mysql_query($sql);
 mysql_close($conn);
