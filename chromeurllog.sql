@@ -8,6 +8,7 @@ CREATE TABLE `chromeurllog` (
   `querystring` varchar(500) NOT NULL COMMENT 'all query string',
   `isok` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1 is ok ,0 has problem',
   `title` varchar(500) DEFAULT NULL COMMENT 'html title fetched by php',
+  `useragent` varchar(500) DEFAULT NULL COMMENT 'useragent',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 

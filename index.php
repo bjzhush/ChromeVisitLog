@@ -29,6 +29,11 @@ if(!empty($_SERVER["HTTP_CLIENT_IP"])) {
 
 $time = date("Y-m-d H:i:s", time()+3600*4);
 
+$userAgent = $_SERVER['HTTP_USER_AGENT'];
+if (!$userAgent) {
+    $userAgent = "NullUserAgent";
+}
+
 $curl = new PCurl();
 $curl->setUrl($url);
 $title = $curl->getTitle();
@@ -41,6 +46,6 @@ if (!$conn) {
 }
 mysql_select_db('google');
 mysql_query("set names 'utf8'");
-$sql = sprintf("insert into chromeurllog (url, time, ip, querystring, isok, title) values ('%s' , '%s', '%s', '%s', '%s', '%s')", $url, $time, $ip, $queryString, $isok, $title);
+$sql = sprintf("insert into chromeurllog (url, time, ip, querystring, isok, title, useragent) values ('%s' , '%s', '%s', '%s', '%s', '%s', '%s')", $url, $time, $ip, $queryString, $isok, $title, $userAgent);
 mysql_query($sql);
 mysql_close($conn);
