@@ -34,10 +34,21 @@ if (!$userAgent) {
     $userAgent = "NullUserAgent";
 }
 
-$curl = new PCurl();
-$curl->setUrl($url);
-$title = $curl->getTitle();
+//Ignore site list
+$search = array(
+        'localhost',
+        );
+$replace = array(
+        '',
+        );
 
+if(str_replace($search, $replace, $url) != $url) {
+    $title = 'Ignore';
+} else {
+    $curl = new PCurl();
+    $curl->setUrl($url);
+    $title = $curl->getTitle();
+}
   
 //log to my db
 $conn = mysql_connect($mysqlHost, $mysqlUser, $mysqlPwd);
