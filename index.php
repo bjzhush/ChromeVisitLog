@@ -1,9 +1,6 @@
 <?php
 // config here
-$mysqlHost = '127.0.0.1';
-$mysqlUser = 'root';
-$mysqlPwd  = '494897';
-
+include 'config.php';
 include 'curl.php';
 $queryString = $_SERVER['QUERY_STRING'];
 $arrExplode  = explode('info:', $queryString);
