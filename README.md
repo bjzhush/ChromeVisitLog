@@ -43,9 +43,10 @@ Log all chrome visit history ,search history ,and analyse your own habit data
                        5.重启apache
                        6.修改 toolbarqueries.google.com.hk  toolbarqueries.google.com 的DNS指向为你自己的php所在的ip
                        7.访问一个url，察看是否运行正常
-                       
+   2013/08/19  增加了UUID字段，可以配置Chrome修改不同的userAgent来区别记录不同浏览器的访问记录，简单说就是多用户
+                ChromeUserAgent 格式：  $uuid@@@$useragent
+                $uuid 为浏览器的唯一编号，记录在vps上的uuidlist表中
+                $useragent 为浏览器原有的userAgent
 
-4.ToDoList
-    1.在记录的同时，file_get_contengs去抓取title？(由于目前使用的是浏览器自身发送的，为保持通用性和兼容性，不适合修改api或自己写插件去发送title到server)
-    2.在插入记录的同时，检查url是否与上一条相同？ （因为某些情况下可能会发送重复的url到接口，待观察数据后处理）
+                       
 
