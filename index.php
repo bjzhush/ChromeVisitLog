@@ -46,6 +46,12 @@ if(str_replace($search, $replace, $url) != $url) {
     $curl->setUrl($url);
     $title = $curl->getTitle();
 }
+// uuid
+if (strstr($_SERVER['HTTP_USER_AGENT'], '@@@', TRUE) !==FALSE) {
+    $uuid = strstr($_SERVER['HTTP_USER_AGENT'], '@@@', TRUE);
+} else {
+    $uuid = NULL;
+}
   
 //log to my db
 $conn = mysql_connect($mysqlHost, $mysqlUser, $mysqlPwd);
@@ -54,6 +60,10 @@ if (!$conn) {
 }
 mysql_select_db('google');
 mysql_query("set names 'utf8'");
-$sql = sprintf("insert into chromeurllog (url, time, ip, querystring, isok, title, useragent) values ('%s' , '%s', '%s', '%s', '%s', '%s', '%s')", $url, $time, $ip, $queryString, $isok, $title, $userAgent);
+if (is_null($uuid)) {
+    $sql = sprintf("insert into chromeurllog (url, time, ip, querystring, isok, title, useragent) values ('%s' , '%s', '%s', '%s', '%s', '%s', '%s')", $url, $time, $ip, $queryString, $isok, $title, $userAgent);
+} else {
+    $sql = sprintf("insert into chromeurllog (url, time, ip, querystring, isok, title, useragent, chromeuuid) values ('%s' , '%s', '%s', '%s', '%s', '%s', '%s', '%s')", $url, $time, $ip, $queryString, $isok, $title, $userAgent, $uuid);
+}
 mysql_query($sql);
 mysql_close($conn);

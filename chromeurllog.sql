@@ -13,14 +13,11 @@ CREATE TABLE `chromeurllog` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS `searchlog`;
+DROP TABLE IF EXISTS `uuidlist`;
 
-CREATE TABLE `searchlog` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id and  A_I ',
-  `keyword` varchar(2000) NOT NULL COMMENT 'keywords searched',
-  `machineid` varchar(32) NOT NULL COMMENT 'macid.{linux|win7|winxp}',
-  `createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `isuploaded` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否已被同步，默认否，值为0',
+CREATE TABLE IF NOT EXISTS `uuidlist` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id only',
+  `uuid` varchar(20) NOT NULL COMMENT 'uuid name ',
+  `comment` varchar(1000) NOT NULL COMMENT 'comment of current uuid',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
-
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
