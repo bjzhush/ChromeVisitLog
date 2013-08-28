@@ -44,7 +44,7 @@ function letsJQuery() {
                     alert('An error occured when query chrome log ,error info : invalid key');
                 } else {
                     if (ajax.info.count > 0) {
-                    $('body').prepend('<div id ="zsTips">You visited current page  ' + ajax.info.count +' times in (' + ajax.info.time + ')</div>');
+                    $('body').prepend('<div id ="zsTips">You visited current page  ' + ajax.info.count +' times ,The latest 5 time is  (' + ajax.info.time + ')</div>');
                     $('#zsTips').css('background-color', 'yellow');
                     }
                     
