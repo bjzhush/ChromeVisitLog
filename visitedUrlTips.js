@@ -37,15 +37,19 @@ function letsJQuery() {
      $.ajax({
             type:       'post',
             url:        'http://localhost/ChromeVisitLog/tips.php',
-         data:       {key : 666888 , url : document.URL},
+            data:       {key : 666888 , url : document.URL},
             dataType:   'json',
             success:    function (ajax) {
                 if (ajax.status =='0') {
                     alert('An error occured when query chrome log ,error info : invalid key');
                 } else {
                     if (ajax.info.count > 0) {
-                    $('body').prepend('<div align="cneter" id="zsTips">You visited current page  ' + ajax.info.count +' times ,The latest 5 time is  (' + ajax.info.time + ')</div>');
-                    $('#zsTips').css('background-color', 'yellow');
+                        var showTimeCount = 5;
+                        if (ajax.info.count < 5) {
+                            showTimeCount = ajax.info.count;
+                        }
+                        $('body').prepend('<div align="cneter" id="zsTips">You visited current page  ' + ajax.info.count +' times ,The latest 5 time is  (' + ajax.info.time + ')</div>');
+                        $('#zsTips').css('background-color', 'yellow');
                     }
                     
                        }
