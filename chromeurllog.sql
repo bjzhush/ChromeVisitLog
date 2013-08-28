@@ -9,7 +9,8 @@ CREATE TABLE `chromeurllog` (
   `isok` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1 is ok ,0 has problem',
   `title` varchar(500) DEFAULT NULL COMMENT 'html title fetched by php',
   `useragent` varchar(500) DEFAULT NULL COMMENT 'useragent',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `url` (`url`(255))
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 
