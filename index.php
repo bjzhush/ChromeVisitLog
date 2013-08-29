@@ -60,6 +60,15 @@ if (!$conn) {
 }
 mysql_select_db('google');
 mysql_query("set names 'utf8'");
+$timeFile = date("Y-m-d H:i:s", time()-300);
+$sqlFive= "select count(*) as num from chromeurllog where time > '$timeFile' and url = '$url'";
+$resFive = mysql_query($sqlFive);
+while ($row = mysql_fetch_assoc($resFive)) {
+    // repeat log a same url in many time in 5 minutes
+    if ($row['num'] > 0 ) {
+        exit('Repeat');
+    }
+}
 if (is_null($uuid)) {
     $sql = sprintf("insert into chromeurllog (url, time, ip, querystring, isok, title, useragent) values ('%s' , '%s', '%s', '%s', '%s', '%s', '%s')", $url, $time, $ip, $queryString, $isok, $title, $userAgent);
 } else {

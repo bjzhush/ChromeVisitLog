@@ -32,25 +32,26 @@ if (!isset($_POST['url'])) {
 }
 $url = $_POST['url'];
 
-//log to my db
 $conn = mysql_connect($mysqlHost, $mysqlUser, $mysqlPwd);
 if (!$conn) {
     exit('Cannot connect to mysql '.mysql_errno());
 }
 mysql_select_db('google');
 mysql_query("set names 'utf8'");
-$sqlHistory = "select time from chromeurllog where url ='$url'";
+$timeFile = date("Y-m-d H:i:s", time()-300);
+$sqlHistory = "select time from chromeurllog where url ='$url' and time < '$timeFile'";
 $resHistory = mysql_query($sqlHistory);
 $res = array();
 while ($row = mysql_fetch_assoc($resHistory)) {
     $res[] = $row['time'];
 }
 $count = count($res);
-if ($count > 5) {
-    $res = array_slice($res,$count-5,5);
-}
+$showRes = array(
+        'first' => $res[0],
+        'last'  => array_pop($res)
+        );
 
 ajaxResponse(1, array(
             'count' => $count,
-            'time'  => $res,
+            'time'  => $showRes,
             ));
