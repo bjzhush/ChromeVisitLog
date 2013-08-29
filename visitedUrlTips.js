@@ -38,7 +38,7 @@
             success:    function (ajax) {
                 if (ajax.status =='0') {
                     alert('An error occured when query chrome log ,error info : invalid key');
-                }else if (ajax.status == '2')
+                }else if (ajax.status == '2') {
                 // exclude domain or url
                 } else {
                     if (ajax.info.count > 0) {
