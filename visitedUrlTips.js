@@ -50,9 +50,9 @@
                                                      + '| <a target = "_blank" href="' + baseUrl + '/viewall.php?s=' 
                                                      + document.URL 
                                                      + '" >ViewAll</a> | ' 
-                                                     + '<a target = "_blank" href = "' + baseUrl +'/disableshow.php?type=url&url=' + document.url + '">Disable URL Tips</a>'
+                                                     + '<a target = "_blank" href = "' + baseUrl +'/disableshow.php?type=url&url=' + document.URL + '">Disable URL Tips</a>'
                                                      + ' | '
-                                                     + '<a target = "_blank" href = "' + baseUrl + '/disableshow.php?type=domain&url=' + document.url + '">Disable Domain Tips </a>'
+                                                     + '<a target = "_blank" href = "' + baseUrl + '/disableshow.php?type=domain&url=' + document.URL + '">Disable Domain Tips </a>'
                                                      + '<div id="zclose">x</div></h2></div>');
                         jquerymonkey('#zsTips').css('background-color', 'LightGoldenRodYellow');
                         jquerymonkey('#zclose').click(function(){ jquerymonkey('#zsTips').hide();});
