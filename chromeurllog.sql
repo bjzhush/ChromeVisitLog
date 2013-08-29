@@ -1,4 +1,3 @@
-DROP TABLE IF EXISTS `chromeurllog`;
 
 CREATE TABLE `chromeurllog` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
@@ -13,12 +12,30 @@ CREATE TABLE `chromeurllog` (
   KEY `url` (`url`(255))
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
-
-DROP TABLE IF EXISTS `uuidlist`;
-
 CREATE TABLE IF NOT EXISTS `uuidlist` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id only',
   `uuid` varchar(20) NOT NULL COMMENT 'uuid name ',
   `comment` varchar(1000) NOT NULL COMMENT 'comment of current uuid',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `errorlog` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `info` varchar(1000) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `excludedomain` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `domain` varchar(200) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `domain` (`domain`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `excludeurl` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `url` varchar(200) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `url` (`url`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+
