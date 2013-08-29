@@ -42,5 +42,5 @@ if ($type = 'url') {
     }
 }
 mysql_query($sql);
-echo '<br>Done';
+echo 'Ok !Done !';
 
