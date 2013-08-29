@@ -38,6 +38,30 @@ if (!$conn) {
 }
 mysql_select_db('google');
 mysql_query("set names 'utf8'");
+
+//exclude url
+$sqlExclude = "select count(*) as num from excludeurl where url = '$url'";
+$resExclude = mysql_query($sqlExclude);
+while ($row = mysql_fetch_assoc($resHistory)) {
+    if ($row['num'] > 0) {
+        ajaxResponse(0, array('info' => 'error'));
+    }
+}
+
+//exclude domain
+$res = parse_url($url);
+if (!isset($res['host'])) {
+        ajaxResponse(0, array('info' => 'bad request ! url is '.$url));
+}
+$domain = $res['host'];
+$sqlExclude = "select count(*) as num from excludedomain where domain = '$domain'";
+$resExclude = mysql_query($sqlExclude);
+while ($row = mysql_fetch_assoc($resHistory)) {
+    if ($row['num'] > 0) {
+        ajaxResponse(2, array('info' => 'exclude url'));
+    }
+}
+
 $timeFile = date("Y-m-d H:i:s", time()-300);
 $sqlHistory = "select time from chromeurllog where url ='$url' and time < '$timeFile'";
 $resHistory = mysql_query($sqlHistory);
