@@ -11,13 +11,20 @@ require ('config.php');
  */
 function ajaxResponse($status, array $info) 
 {
-    $arr = array(
-            'status' => $status,
-            'info'   => array(
-                'count' => $info['count'],
-                'time'  => $info['time']
-                )
-            );
+    if (isset($info['count'])) {
+        $arr = array(
+                'status' => $status,
+                'info'   => array(
+                    'count' => $info['count'],
+                    'time'  => $info['time']
+                    )
+                );
+    } else {
+        $arr = array(
+                'status' => $status,
+                'info'   => $info,
+                );
+    }
     echo json_encode($arr);
     exit;
 }
