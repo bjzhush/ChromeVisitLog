@@ -42,9 +42,9 @@ mysql_query("set names 'utf8'");
 //exclude url
 $sqlExclude = "select count(*) as num from excludeurl where url = '$url'";
 $resExclude = mysql_query($sqlExclude);
-while ($row = mysql_fetch_assoc($resHistory)) {
+while ($row = mysql_fetch_assoc($resExclude)) {
     if ($row['num'] > 0) {
-        ajaxResponse(0, array('info' => 'error'));
+        ajaxResponse(2, array('info' => 'exlucde url'));
     }
 }
 
@@ -56,9 +56,9 @@ if (!isset($res['host'])) {
 $domain = $res['host'];
 $sqlExclude = "select count(*) as num from excludedomain where domain = '$domain'";
 $resExclude = mysql_query($sqlExclude);
-while ($row = mysql_fetch_assoc($resHistory)) {
+while ($row = mysql_fetch_assoc($resExclude)) {
     if ($row['num'] > 0) {
-        ajaxResponse(2, array('info' => 'exclude url'));
+        ajaxResponse(2, array('info' => 'exclude domain'));
     }
 }
 
