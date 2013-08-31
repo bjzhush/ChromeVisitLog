@@ -27,7 +27,7 @@ Log all chrome visit history ,search history ,and analyse your own habit data
     e.在server上mysql里建立一个叫做google的库,导入文件夹内的 chromeurllog.sql 这个文件
     f.复制demo.config.php ,重命名为config.php ,设置自己的mysql密码,authkey
     g.重启apapche
-    h.Chrome安装tampermonkey,手动新建一个,将visisedUrlTips.js的内容复制进去
+    h.Chrome安装tampermonkey,到 http://userscripts.org/scripts/show/176738  进行安装,以后也可以通过这个来升级
     i.搜索 var baseUrl ,将值修改为你自己的http://toolbarqueries.google.com (也可以单独配一个vhost)
     j.修改 authkey为config.php内对应的值
 
@@ -35,3 +35,6 @@ Log all chrome visit history ,search history ,and analyse your own habit data
     a.chrome通过全局代理浏览网页时,由于dns解析完全从远程发起(包括localhost),所以可能记录不到浏览记录
     b.https页面由于chrome默认的安全策略,无法运行脚本,所以目前只能记录浏览历史,不能通过脚本显示访问记录,故js脚本内匹配的也是http://
     c.目前已经采取了jquery的noconflict模式,但是在某些引入了jquery的html页面内,还是会引起问题,导致部分功能不正常(待解决)
+
+5. Todo
+   a.基于所有的url记录,找出google搜索过的所有关键词,然后对其进行分词,然后排序,观察自己搜索最多的关键词是什么(我猜自己搜索的前三个关键词是PHP linux vim,到时候程序做出来再验证把!)
