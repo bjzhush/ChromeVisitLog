@@ -33,5 +33,5 @@ Log all chrome visit history ,search history ,and analyse your own habit data
 
 4. 各种小问题及细节
     a.chrome通过全局代理浏览网页时,由于dns解析完全从远程发起(包括localhost),所以可能记录不到浏览记录
-    b.https由于chrome默认的安全策略,无法运行脚本,所以目前只能记录浏览历史,不能通过脚本显示访问记录,故js脚本内匹配的也是http://
+    b.https页面由于chrome默认的安全策略,无法运行脚本,所以目前只能记录浏览历史,不能通过脚本显示访问记录,故js脚本内匹配的也是http://
     c.目前已经采取了jquery的noconflict模式,但是在某些引入了jquery的html页面内,还是会引起问题,导致部分功能不正常(待解决)
