@@ -14,7 +14,6 @@
 (function (){
     $(document).ready(function () {
         var baseUrl = 'http://query.shuaizhu.com';
-        var $ = unsafeWindow.jQuery;
 
         $.ajax({
             type:       'post',
