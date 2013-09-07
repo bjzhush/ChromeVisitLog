@@ -28,7 +28,7 @@ if (!$conn) {
 mysql_select_db('google');
 mysql_query("set names 'utf8'");
 
-if ($type = 'url') {
+if ($type == 'url') {
     $sql = "insert into excludeurl (`url`) values ('$url')";
 } else {
     $res = parse_url($url);
