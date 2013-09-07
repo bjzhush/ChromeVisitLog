@@ -38,7 +38,7 @@ if ($type == 'url') {
         $sql = "insert into errorlog (`info`) values ('$info')";
     } else {
         $domain = $res['host'];
-        $sql = "insert into  excludedomain (`domain`) values '$domain'";
+        $sql = "insert into  excludedomain (`domain`) values ('$domain')";
     }
 }
 mysql_query($sql);
