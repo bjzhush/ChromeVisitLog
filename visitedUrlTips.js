@@ -14,6 +14,7 @@
 (function (){
     $(document).ready(function () {
         var baseUrl = 'http://query.shuaizhu.com';
+        
 
         $.ajax({
             type:       'post',
@@ -38,9 +39,9 @@
                                           + '| <a target = "_blank" href="' + baseUrl + '/viewall.php?s=' 
                                           + document.URL 
                                           + '" >ViewAll</a> | ' 
-                                          + '<span id="hideUrl"><a target = "_blank" href = "' + baseUrl +'/disableshow.php?type=url&url=' + document.URL + '">Disable URL Tips</a></span>'
+                                          + '<span id="hideUrl">Disable URL Tips</span>'
                                           + ' | '
-                                          + '<span id="hideDomain"><a target = "_blank" href = "' + baseUrl + '/disableshow.php?type=domain&url=' + document.URL + '">Disable Domain Tips </a></span>'
+                                          + '<span id="hideDomain">Disable Domain Tips</span>'
                                           + '<div id="zclose">x</div></h2></div>');
                         $('#zsTips').css('background-color', 'LightGoldenRodYellow');
                         $('#zclose').click(function(){ $('#zsTips').remove();});
@@ -50,11 +51,28 @@
                         $('#hideDomain').click(function(){
                             $('#zsTips').remove();
                         });
-
-
+                        $('#hideUrl').click(function(){
+                             $.ajax({
+                                 type:       'post',
+                                 url:        baseUrl + '/disableshow.php?type=url&url=' + document.URL,
+                                 data:       {key : 'bjxxx' , url : document.URL},
+                                 dataType:   'json',
+                                 success:    function (ajax) {}
+                            });
+                       });
+                       $('#hideDomain').click(function(){
+                             $.ajax({
+                                 type:       'post',
+                                 url:        baseUrl + '/disableshow.php?type=domain&url=' + document.URL,
+                                 data:       {key : 'bjxxx' , url : document.URL},
+                                 dataType:   'json',
+                                 success:    function (ajax) {}
+                            });
+                       });
                     }
                 }
             }
         });
+     
     });
 })();
